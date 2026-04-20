@@ -1,4 +1,4 @@
-# Profile — Dora
+# Profile 
 
 A clean, minimalist personal profile page built with **Next.js 15 (App Router)**, **Tailwind CSS v4**, and **Framer Motion**.
 
