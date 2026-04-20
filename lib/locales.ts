@@ -80,7 +80,7 @@ export const locales: Record<Locale, LocaleStrings> = {
     projects: {
       label: "Projects",
       title: "Selected work",
-      github: "GitHub",
+      github: "View on GitHub",
       liveDemo: "Live Demo",
       private: "Private",
     },
@@ -128,7 +128,7 @@ export const locales: Record<Locale, LocaleStrings> = {
     projects: {
       label: "Dự án",
       title: "Dự án đã làm",
-      github: "GitHub",
+      github: "Xem GitHub",
       liveDemo: "Xem trực tiếp",
       private: "Riêng tư",
     },
