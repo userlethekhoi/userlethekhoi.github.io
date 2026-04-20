@@ -73,7 +73,7 @@ export const defaultProfile: ProfileData = {
 
   socials: [
     { label: "Email", url: "mailto:lethekhoi0533@gmail.com" },
-    { label: "GitHub", url: "https://github.com/kdus09" },
+    { label: "GitHub", url: "https://github.com/userlethekhoi" },
     { label: "Telegram", url: "https://t.me/coder_009" },
     { label: "Facebook", url: "https://www.facebook.com/coder09" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/coder09/" },
@@ -103,8 +103,8 @@ export const defaultProfile: ProfileData = {
       description: "A modern, minimalist portfolio website showcasing my work and skills. Built with Next.js, Tailwind CSS, and Framer Motion.",
       descriptionVi: "Website portfolio hiện đại, tối giản giới thiệu công việc và kỹ năng. Xây dựng với Next.js, Tailwind CSS và Framer Motion.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      github: "https://github.com/kdus09/coder009.github.io",
-      live: "https://kdus09.github.io/coder009.github.io",
+      github: "https://github.com/userlethekhoi/userlethekhoi.github.io",
+      live: "https://userlethekhoi.github.io/",
       featured: true,
       image: "https://picsum.photos/id/101/800/600",
     },
