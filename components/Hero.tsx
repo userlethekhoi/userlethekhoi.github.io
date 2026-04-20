@@ -20,8 +20,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center px-6 pt-20 pb-16 max-w-4xl mx-auto
-        bg-gradient-to-b from-white to-slate-50"
+      className="min-h-screen flex flex-col justify-center px-6 pt-20 pb-16 max-w-4xl mx-auto"
     >
       <motion.p
         custom={0.1}

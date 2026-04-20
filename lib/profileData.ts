@@ -88,25 +88,25 @@ export const defaultProfile: ProfileData = {
     { name: "HTML5", icon: "html5" },
     { name: "CSS3", icon: "css3" },
     { name: "JavaScript", icon: "javascript" },
+    { name: "TypeScript", icon: "typescript" },
     { name: "Python", icon: "python" },
+    // Mobile & Native
+    { name: "React Native", icon: "reactnative" },
+    { name: "Objective-C", icon: "objectivec" },
+    // Systems & Low-level Languages
+    { name: "C", icon: "c" },
+    { name: "C++", icon: "cplusplus" },
+    { name: "Linux", icon: "linux" },
+    { name: "Ubuntu", icon: "ubuntu" },
     // CSS Enhancers
     { name: "SASS", icon: "sass" },
-    { name: "Tailwind CSS", icon: "tailwind" },
+    { name: "Tailwind CSS", icon: "tailwindcss" },
     { name: "Bootstrap", icon: "bootstrap" },
     // Development Tools
     { name: "Node.js", icon: "nodejs" },
     { name: "NPM", icon: "npm" },
     { name: "Git", icon: "git" },
     { name: "VS Code", icon: "vscode" },
-    // Frameworks & More
-    { name: "React", icon: "react" },
-    { name: "Next.js", icon: "nextjs" },
-    { name: "TypeScript", icon: "typescript" },
-    { name: "Framer Motion", icon: "framer" },
-    { name: "Swift", icon: "swift" },
-    { name: "Docker", icon: "docker" },
-    { name: "PostgreSQL", icon: "postgresql" },
-    { name: "Figma", icon: "figma" },
   ],
 
   projects: [

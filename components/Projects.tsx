@@ -22,6 +22,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="px-6 py-24 max-w-5xl mx-auto">
+      <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-slate-100 p-8 sm:p-10">
       <motion.div
         variants={container}
         initial="hidden"
@@ -130,6 +131,7 @@ export default function Projects() {
           })}
         </div>
       </motion.div>
+      </div>
     </section>
   );
 }

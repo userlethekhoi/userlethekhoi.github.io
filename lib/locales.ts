@@ -28,9 +28,10 @@ export interface LocaleStrings {
     title: string;
     groups: {
       core: string;
+      mobile: string;
+      systems: string;
       css: string;
       tools: string;
-      frameworks: string;
     };
   };
   projects: {
@@ -85,9 +86,10 @@ export const locales: Record<Locale, LocaleStrings> = {
       title: "What I work with",
       groups: {
         core: "Core Web Technologies",
+        mobile: "Mobile & Native",
+        systems: "Systems & Low-level",
         css: "CSS Enhancers",
         tools: "Development Tools",
-        frameworks: "Frameworks & More",
       },
     },
     projects: {
@@ -140,9 +142,10 @@ export const locales: Record<Locale, LocaleStrings> = {
       title: "Những gì tôi làm",
       groups: {
         core: "Công nghệ Web Cốt lõi",
-        css: "Công cụ CSS Nâng cao",
+        mobile: "Di động & Native",
+        systems: "Hệ thống & Low-level",
+        css: "CSS Nâng cao",
         tools: "Công cụ Phát triển",
-        frameworks: "Framework & Khác",
       },
     },
     projects: {

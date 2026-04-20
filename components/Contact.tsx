@@ -39,6 +39,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="px-6 py-24 max-w-4xl mx-auto">
+      <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-slate-100 p-8 sm:p-10">
       <motion.div
         variants={container}
         initial="hidden"
@@ -84,7 +85,7 @@ export default function Contact() {
                   href={`mailto:${profile.hotmail}`}
                   className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-blue-500 transition-colors duration-200 cursor-pointer"
                 >
-                  <SocialIcon label="Hotmail" size={18} />
+                  <SocialIcon label="Envelope" size={18} />
                   {profile.hotmail}
                 </a>
                 {profile.socials.map((s) => (
@@ -200,15 +201,7 @@ export default function Contact() {
           {t.footer.credit} · {profile.footerText}
         </p>
       </motion.footer>
+      </div>
     </section>
-  );
-}
-
-function EnvelopeIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-      <polyline points="22,6 12,13 2,6"/>
-    </svg>
   );
 }
