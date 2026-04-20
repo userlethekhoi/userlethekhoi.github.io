@@ -43,6 +43,7 @@ export interface ProfileData {
   // Social
   socials: SocialLink[];
   email: string;
+  hotmail: string;
 
   // Skills
   skills: Skill[];
@@ -72,13 +73,15 @@ export const defaultProfile: ProfileData = {
   timezone: "GMT +7",
 
   socials: [
-    { label: "Email", url: "mailto:lethekhoi0533@gmail.com" },
     { label: "GitHub", url: "https://github.com/userlethekhoi" },
+    { label: "TikTok", url: "https://www.tiktok.com/@tkhoi.lee_dev" },
+    { label: "TikTok", url: "https://www.tiktok.com/@coder_009" },
     { label: "Telegram", url: "https://t.me/coder_009" },
     { label: "Facebook", url: "https://www.facebook.com/coder09" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/coder09/" },
   ],
   email: "lethekhoi0533@gmail.com",
+  hotmail: "lethekhoi209@hotmail.com",
 
   skills: [
     // Core Web Technologies

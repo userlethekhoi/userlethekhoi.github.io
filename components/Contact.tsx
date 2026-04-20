@@ -71,16 +71,22 @@ export default function Contact() {
                 {t.contact.findMeOnline}
               </p>
               <div className="space-y-3">
-                {profile.email.split('\n').map((email, idx) => (
-                  <a
-                    key={idx}
-                    href={`mailto:${email}`}
-                    className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
-                  >
-                    <EnvelopeIcon />
-                    {email}
-                  </a>
-                ))}
+                {/* Gmail */}
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-red-500 transition-colors duration-200 cursor-pointer"
+                >
+                  <SocialIcon label="Gmail" size={18} />
+                  {profile.email}
+                </a>
+                {/* Hotmail */}
+                <a
+                  href={`mailto:${profile.hotmail}`}
+                  className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-blue-500 transition-colors duration-200 cursor-pointer"
+                >
+                  <SocialIcon label="Hotmail" size={18} />
+                  {profile.hotmail}
+                </a>
                 {profile.socials.map((s) => (
                   <a
                     key={s.label}
