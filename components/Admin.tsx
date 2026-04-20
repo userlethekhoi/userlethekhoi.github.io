@@ -526,6 +526,7 @@ export default function Admin() {
                     github: "",
                     live: "",
                     featured: false,
+                    image: "https://picsum.photos/id/501/800/600",
                   },
                 ];
                 setDraft((d) => ({ ...d, projects: updated }));
