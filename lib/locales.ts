@@ -26,6 +26,12 @@ export interface LocaleStrings {
   skills: {
     label: string;
     title: string;
+    groups: {
+      core: string;
+      css: string;
+      tools: string;
+      frameworks: string;
+    };
   };
   projects: {
     label: string;
@@ -41,6 +47,7 @@ export interface LocaleStrings {
     namePlaceholder: string;
     emailPlaceholder: string;
     messagePlaceholder: string;
+    message: string;
     sendBtn: string;
     sending: string;
     success: string;
@@ -62,7 +69,7 @@ export const locales: Record<Locale, LocaleStrings> = {
     },
     hero: {
       hello: "Hello, I am",
-      viewMore: "Xem thêm",
+      viewMore: "View more",
     },
     about: {
       label: "About",
@@ -76,6 +83,12 @@ export const locales: Record<Locale, LocaleStrings> = {
     skills: {
       label: "Skills",
       title: "What I work with",
+      groups: {
+        core: "Core Web Technologies",
+        css: "CSS Enhancers",
+        tools: "Development Tools",
+        frameworks: "Frameworks & More",
+      },
     },
     projects: {
       label: "Projects",
@@ -91,6 +104,7 @@ export const locales: Record<Locale, LocaleStrings> = {
       namePlaceholder: "Your name",
       emailPlaceholder: "you@example.com",
       messagePlaceholder: "Tell me about your project...",
+      message: "Message",
       sendBtn: "Send Message",
       sending: "Sending...",
       success: "Message sent! I will get back to you soon.",
@@ -124,6 +138,12 @@ export const locales: Record<Locale, LocaleStrings> = {
     skills: {
       label: "Kỹ năng",
       title: "Những gì tôi làm",
+      groups: {
+        core: "Công nghệ Web Cốt lõi",
+        css: "Công cụ CSS Nâng cao",
+        tools: "Công cụ Phát triển",
+        frameworks: "Framework & Khác",
+      },
     },
     projects: {
       label: "Dự án",
@@ -139,6 +159,7 @@ export const locales: Record<Locale, LocaleStrings> = {
       namePlaceholder: "Tên của bạn",
       emailPlaceholder: "email@example.com",
       messagePlaceholder: "Kể về dự án của bạn...",
+      message: "Tin nhắn",
       sendBtn: "Gửi tin nhắn",
       sending: "Đang gửi...",
       success: "Đã gửi! Tôi sẽ phản hồi sớm nhất có thể.",

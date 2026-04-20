@@ -8,7 +8,7 @@ export interface SocialLink {
 
 export interface Skill {
   name: string;
-  icon: string; // inline SVG path data
+  icon: string; // icon key for Icons.tsx
 }
 
 export interface Project {
@@ -81,18 +81,29 @@ export const defaultProfile: ProfileData = {
   email: "lethekhoi0533@gmail.com",
 
   skills: [
+    // Core Web Technologies
+    { name: "HTML5", icon: "html5" },
+    { name: "CSS3", icon: "css3" },
+    { name: "JavaScript", icon: "javascript" },
+    { name: "Python", icon: "python" },
+    // CSS Enhancers
+    { name: "SASS", icon: "sass" },
+    { name: "Tailwind CSS", icon: "tailwind" },
+    { name: "Bootstrap", icon: "bootstrap" },
+    // Development Tools
+    { name: "Node.js", icon: "nodejs" },
+    { name: "NPM", icon: "npm" },
+    { name: "Git", icon: "git" },
+    { name: "VS Code", icon: "vscode" },
+    // Frameworks & More
     { name: "React", icon: "react" },
     { name: "Next.js", icon: "nextjs" },
     { name: "TypeScript", icon: "typescript" },
-    { name: "Tailwind CSS", icon: "tailwind" },
     { name: "Framer Motion", icon: "framer" },
-    { name: "Node.js", icon: "nodejs" },
-    { name: "Python", icon: "python" },
-    { name: "Git", icon: "git" },
-    { name: "Figma", icon: "figma" },
-    { name: "iOS / Swift", icon: "ios" },
+    { name: "Swift", icon: "swift" },
     { name: "Docker", icon: "docker" },
     { name: "PostgreSQL", icon: "postgresql" },
+    { name: "Figma", icon: "figma" },
   ],
 
   projects: [
@@ -106,7 +117,7 @@ export const defaultProfile: ProfileData = {
       github: "https://github.com/userlethekhoi/userlethekhoi.github.io",
       live: "https://userlethekhoi.github.io/",
       featured: true,
-      image: "https://picsum.photos/id/101/800/600",
+      image: "https://picsum.photos/seed/port1/800/600",
     },
     {
       id: "p2",
@@ -118,7 +129,7 @@ export const defaultProfile: ProfileData = {
       github: "",
       live: "",
       featured: true,
-      image: "https://picsum.photos/id/201/800/600",
+      image: "https://picsum.photos/seed/port2/800/600",
     },
     {
       id: "p3",
@@ -130,7 +141,7 @@ export const defaultProfile: ProfileData = {
       github: "",
       live: "",
       featured: true,
-      image: "https://picsum.photos/id/301/800/600",
+      image: "https://picsum.photos/seed/port3/800/600",
     },
     {
       id: "p4",
@@ -142,7 +153,7 @@ export const defaultProfile: ProfileData = {
       github: "",
       live: "",
       featured: true,
-      image: "https://picsum.photos/id/401/800/600",
+      image: "https://picsum.photos/seed/port4/800/600",
     },
   ],
 

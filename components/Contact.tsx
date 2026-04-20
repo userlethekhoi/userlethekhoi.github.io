@@ -137,7 +137,7 @@ export default function Contact() {
 
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="message" className="text-xs font-medium text-slate-500">
-                  Message
+                  {t.contact.message}
                 </label>
                 <textarea
                   id="message"

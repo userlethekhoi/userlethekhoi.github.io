@@ -8,12 +8,12 @@ const container = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const card = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
@@ -46,7 +46,6 @@ export default function Projects() {
           {profile.projects.map((project) => {
             const title = locale === "vi" ? project.titleVi : project.title;
             const desc = locale === "vi" ? project.descriptionVi : project.description;
-            const isPrivate = !project.github && !project.live;
 
             return (
               <motion.article
@@ -55,15 +54,23 @@ export default function Projects() {
                 className="group bg-white rounded-2xl border border-slate-200 overflow-hidden
                   transition-all duration-300 hover:border-indigo-200 hover:shadow-lg"
               >
-                {/* Project Image */}
-                <div className="relative w-full h-52 overflow-hidden bg-slate-100">
+                {/* Code Screenshot Image */}
+                <div className="relative w-full h-56 overflow-hidden bg-slate-900">
                   <Image
                     src={project.image}
-                    alt={`${title} preview`}
+                    alt={`${title} code preview`}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-top opacity-80 group-hover:opacity-90 transition-opacity duration-500"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  {/* Code editor overlay hint */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/30" />
+                  {/* Editor chrome dots */}
+                  <div className="absolute top-3 left-4 flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
                 </div>
 
                 {/* Content */}
