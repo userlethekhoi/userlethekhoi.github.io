@@ -91,7 +91,7 @@ export const defaultProfile: ProfileData = {
     { name: "TypeScript", icon: "typescript" },
     { name: "Python", icon: "python" },
     // Mobile & Native
-    { name: "React Native", icon: "reactnative" },
+    { name: "React Native", icon: "react" },
     { name: "Objective-C", icon: "objectivec" },
     // Systems & Low-level Languages
     { name: "C", icon: "c" },
@@ -106,7 +106,7 @@ export const defaultProfile: ProfileData = {
     { name: "Node.js", icon: "nodejs" },
     { name: "NPM", icon: "npm" },
     { name: "Git", icon: "git" },
-    { name: "VS Code", icon: "vscode" },
+    { name: "VS Code", icon: "visualstudiocode" },
   ],
 
   projects: [
