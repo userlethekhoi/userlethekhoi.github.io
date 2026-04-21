@@ -1,142 +1,117 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { useApp } from "@/lib/AppContext";
 import { supportedLocales } from "./Icons";
 
 const navLinks = [
-  { key: "about", href: "#about" },
-  { key: "skills", href: "#skills" },
-  { key: "projects", href: "#projects" },
-  { key: "contact", href: "#contact" },
+  { key: "about", href: "#about", num: "01" },
+  { key: "skills", href: "#skills", num: "02" },
+  { key: "projects", href: "#projects", num: "03" },
+  { key: "contact", href: "#contact", num: "04" },
 ];
 
 export default function Navbar() {
-  const { t, locale, setLocale, profile } = useApp();
+  const { t, locale, setLocale } = useApp();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const toggleLocale = () => setLocale(locale === "en" ? "vi" : "en");
+  const otherLocale = locale === "en" ? "VN" : "EN";
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100"
+          ? "backdrop-blur-md bg-paper/75 border-b border-ink/10"
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
           href="#"
-          className="text-lg font-semibold tracking-tight text-slate-800 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
+          className="font-display font-bold text-xl tracking-tightest text-ink"
         >
-          {profile.displayName}
+          LTK<span className="text-accent">.</span>
         </a>
 
-        {/* Desktop nav */}
-        <div className="flex items-center gap-6">
-          <ul className="hidden md:flex items-center gap-8 list-none m-0">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
-                >
-                  {t.nav[link.key as keyof typeof t.nav]}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Language switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors duration-200 cursor-pointer border border-slate-200 rounded-full px-3 py-1.5 bg-white hover:border-indigo-300"
-              aria-label="Switch language"
-            >
-              <span>{supportedLocales.find((l) => l.code === locale)?.flag}</span>
-              <span className="hidden sm:inline text-xs">{locale === "en" ? "EN" : "VI"}</span>
-              <span className="text-xs">▼</span>
-            </button>
-
-            {langOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden z-50">
-                {supportedLocales.map((l) => (
-                  <button
-                    key={l.code}
-                    onClick={() => {
-                      setLocale(l.code);
-                      setLangOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-left transition-colors duration-150 cursor-pointer ${
-                      locale === l.code
-                        ? "bg-indigo-50 text-indigo-700 font-medium"
-                        : "text-slate-600 hover:bg-slate-50"
-                    }`}
-                  >
-                    <span>{l.flag}</span>
-                    <span>{l.label}</span>
-                    {locale === l.code && <span className="ml-auto text-xs">✓</span>}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer bg-transparent border-none"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="px-6 pb-4 pt-2 flex flex-col gap-3 list-none m-0 bg-white border-t border-slate-100">
+        <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="block text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors cursor-pointer"
-                onClick={() => setMobileOpen(false)}
+                className="group flex items-center gap-1.5 text-sm font-medium text-ink/70 hover:text-ink transition-colors"
               >
+                <span className="font-mono text-[10px] text-ink/30 group-hover:text-accent transition-colors">
+                  {link.num}
+                </span>
+                <span>{t.nav[link.key as keyof typeof t.nav]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleLocale}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-ink/20 font-mono text-[11px] tracking-widest hover:bg-ink hover:text-paper hover:border-ink transition-all"
+            aria-label="Toggle language"
+          >
+            <span className="text-ink/40">{locale.toUpperCase()}</span>
+            <span>/</span>
+            <span>{otherLocale}</span>
+          </button>
+
+          <button
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-5 h-px bg-ink transition-all duration-300 ${
+                mobileOpen ? "rotate-45 translate-y-[6px]" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-px bg-ink transition-all duration-300 ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-px bg-ink transition-all duration-300 ${
+                mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </nav>
+
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="px-6 pb-6 pt-2 flex flex-col gap-4 bg-paper/95 backdrop-blur-md border-t border-ink/10">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-baseline gap-3 font-display text-2xl font-semibold text-ink"
+              >
+                <span className="font-mono text-xs text-ink/40">{link.num}</span>
                 {t.nav[link.key as keyof typeof t.nav]}
               </a>
             </li>
           ))}
-          <li>
-            <div className="flex items-center gap-3 pt-2 border-t border-slate-100 mt-1">
+          <li className="pt-2 border-t border-ink/10">
+            <div className="flex items-center gap-2">
               {supportedLocales.map((l) => (
                 <button
                   key={l.code}
@@ -144,20 +119,19 @@ export default function Navbar() {
                     setLocale(l.code);
                     setMobileOpen(false);
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full border cursor-pointer transition-colors duration-150 ${
+                  className={`px-3.5 py-1.5 rounded-full border font-mono text-[11px] tracking-widest transition-all ${
                     locale === l.code
-                      ? "border-indigo-400 bg-indigo-50 text-indigo-700"
-                      : "border-slate-200 text-slate-500 hover:border-indigo-300"
+                      ? "bg-ink text-paper border-ink"
+                      : "border-ink/20 text-ink/70 hover:border-ink"
                   }`}
                 >
-                  <span>{l.flag}</span>
-                  <span>{l.label}</span>
+                  {l.code.toUpperCase()}
                 </button>
               ))}
             </div>
           </li>
         </ul>
       </div>
-    </motion.header>
+    </header>
   );
 }

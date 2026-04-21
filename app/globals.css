@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply box-border p-0 m-0;
+    @apply box-border;
   }
 
   html {
@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 font-sans leading-relaxed;
+    @apply bg-paper text-ink leading-relaxed;
   }
 
   html,
@@ -23,32 +23,46 @@
     overflow-x: hidden;
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: rgba(11, 11, 15, 0.15);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: rgba(11, 11, 15, 0.3);
   }
 
-  /* Selection */
   ::selection {
-    background-color: #e0e7ff;
-    color: #3730a3;
+    background-color: #7c5cff;
+    color: #fafaf7;
   }
+}
 
-  /* Cursor */
-  a,
-  button,
-  [role="button"],
-  input[type="submit"] {
-    cursor: pointer;
+@layer components {
+  .section-label {
+    @apply font-mono text-[11px] tracking-[0.2em] uppercase text-ink/50;
+  }
+  .pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border border-ink/15
+      text-sm text-ink/80 bg-paper hover:bg-ink hover:text-paper hover:border-ink
+      transition-all duration-200 cursor-default;
+  }
+  .pill-svg {
+    @apply w-4 h-4 flex items-center justify-center shrink-0;
+  }
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute left-0 -bottom-0.5 w-0 h-px bg-current transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
   }
 }

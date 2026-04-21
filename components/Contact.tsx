@@ -1,206 +1,117 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useApp } from "@/lib/AppContext";
 import { SocialIcon } from "./Icons";
 
 const container = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
-
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
 export default function Contact() {
   const { profile, t, locale } = useApp();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-    }, 1200);
-  }
 
   const contactNote = locale === "vi" ? profile.contactNoteVi : profile.contactNote;
 
   return (
-    <section id="contact" className="px-6 py-24 max-w-4xl mx-auto">
-      <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-slate-100 p-8 sm:p-10">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-      >
-        <motion.span
-          variants={item}
-          className="text-xs font-semibold tracking-widest uppercase text-slate-400"
+    <section id="contact" className="relative px-6 py-24 md:py-36">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="border-t border-ink/10 pt-12"
         >
-          {t.contact.label}
-        </motion.span>
-
-        <motion.h2
-          variants={item}
-          className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4 tracking-tight"
-        >
-          {t.contact.title}
-        </motion.h2>
-
-        <motion.p variants={item} className="text-base text-slate-500 mb-10 max-w-lg leading-relaxed">
-          {contactNote}
-        </motion.p>
-
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Social */}
-          <motion.div variants={item} className="flex-shrink-0 space-y-6">
-            <div>
-              <p className="text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
-                {t.contact.findMeOnline}
-              </p>
-              <div className="space-y-3">
-                {/* Gmail */}
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-red-500 transition-colors duration-200 cursor-pointer"
-                >
-                  <SocialIcon label="Gmail" size={18} />
-                  {profile.email}
-                </a>
-                {/* Hotmail */}
-                <a
-                  href={`mailto:${profile.hotmail}`}
-                  className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-blue-500 transition-colors duration-200 cursor-pointer"
-                >
-                  <SocialIcon label="Envelope" size={18} />
-                  {profile.hotmail}
-                </a>
-                {profile.socials.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
-                  >
-                    <SocialIcon label={s.label} size={16} />
-                    <span>{s.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
+          <motion.div variants={item} className="flex items-center gap-3 mb-12">
+            <span className="section-label">› 04 / {t.contact.label}</span>
+            <span className="h-px flex-1 bg-ink/10" />
           </motion.div>
 
-          {/* Form */}
-          <motion.div variants={item} className="flex-1">
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-xs font-medium text-slate-500">
-                    {t.contact.namePlaceholder}
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    className="w-full px-4 py-2.5 text-sm bg-white border border-slate-200 rounded-lg
-                      focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400
-                      transition-all duration-200 placeholder-slate-300"
-                    placeholder={t.contact.namePlaceholder}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-xs font-medium text-slate-500">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    className="w-full px-4 py-2.5 text-sm bg-white border border-slate-200 rounded-lg
-                      focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400
-                      transition-all duration-200 placeholder-slate-300"
-                    placeholder={t.contact.emailPlaceholder}
-                  />
-                </div>
-              </div>
+          <motion.h2
+            variants={item}
+            className="font-display font-bold text-[clamp(2.75rem,10vw,8rem)] leading-[0.95] tracking-tightest text-ink mb-10"
+          >
+            Let&apos;s build
+            <br />
+            something{" "}
+            <em className="not-italic relative inline-block">
+              <span className="relative z-10 text-accent italic">great.</span>
+              <span className="absolute -inset-x-2 bottom-2 h-3 bg-mint/70 -z-0 rounded-sm" />
+            </em>
+          </motion.h2>
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-xs font-medium text-slate-500">
-                  {t.contact.message}
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                  className="w-full px-4 py-2.5 text-sm bg-white border border-slate-200 rounded-lg resize-none
-                    focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400
-                    transition-all duration-200 placeholder-slate-300"
-                  placeholder={t.contact.messagePlaceholder}
-                />
-              </div>
+          <motion.p
+            variants={item}
+            className="text-lg md:text-xl text-ink/60 leading-relaxed max-w-2xl mb-14"
+          >
+            {contactNote ||
+              "Have an idea, a role, or just want to say hi? Drop a line — I reply to every message."}
+          </motion.p>
 
-              <div className="flex items-center gap-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="self-start px-6 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg cursor-pointer
-                    transition-all duration-200 hover:scale-105 hover:bg-indigo-700
-                    disabled:opacity-60 disabled:cursor-not-allowed
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-600"
-                >
-                  {loading ? t.contact.sending : t.contact.sendBtn}
-                </button>
+          {/* Big email CTA */}
+          <motion.a
+            variants={item}
+            href={`mailto:${profile.email}`}
+            className="group inline-flex items-baseline gap-3 font-display font-semibold text-3xl md:text-5xl tracking-tightest text-ink mb-16"
+          >
+            <span className="text-accent">→</span>
+            <span className="relative">
+              {profile.email}
+              <span className="absolute left-0 right-0 -bottom-1 h-0.5 bg-ink scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+            </span>
+          </motion.a>
 
-                {sent && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-sm text-green-600"
-                  >
-                    {t.contact.success}
-                  </motion.p>
-                )}
-              </div>
-            </form>
+          {/* Social row */}
+          <motion.div
+            variants={item}
+            className="flex flex-wrap items-center gap-2 md:gap-3 mb-20"
+          >
+            <span className="section-label mr-3">{t.contact.findMeOnline}</span>
+            {[
+              { label: "Gmail", url: `mailto:${profile.email}` },
+              ...(profile.hotmail ? [{ label: "Hotmail", url: `mailto:${profile.hotmail}` }] : []),
+              ...profile.socials.map((s) => ({ label: s.label, url: s.url })),
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target={s.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-ink/15 text-sm text-ink/80 hover:bg-ink hover:text-paper hover:border-ink transition-all"
+              >
+                <SocialIcon label={s.label} size={15} />
+                <span>{s.label}</span>
+              </a>
+            ))}
           </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
-        className="mt-20 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4"
-      >
-        <p className="text-xs text-slate-400">
-          © {new Date().getFullYear()} {profile.fullName}. {t.footer.rights}
-        </p>
-        <p className="text-xs text-slate-400">
-          {t.footer.credit} · {profile.footerText}
-        </p>
-      </motion.footer>
+        {/* Footer */}
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-8 pt-8 border-t border-ink/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        >
+          <div className="flex items-baseline gap-3">
+            <span className="font-display font-bold text-lg text-ink">
+              LTK<span className="text-accent">.</span>
+            </span>
+            <p className="font-mono text-[11px] tracking-widest uppercase text-ink/40">
+              © {new Date().getFullYear()} {profile.fullName}
+            </p>
+          </div>
+          <p className="font-mono text-[11px] tracking-widest uppercase text-ink/40">
+            {t.footer.credit} · Crafted with ☕ + Tailwind
+          </p>
+        </motion.footer>
       </div>
     </section>
   );

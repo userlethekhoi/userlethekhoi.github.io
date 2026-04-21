@@ -7,7 +7,7 @@ import Contact from "@/components/Contact";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
