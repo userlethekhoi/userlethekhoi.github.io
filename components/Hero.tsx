@@ -113,29 +113,42 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Avatar column with offset pastel block */}
+        {/* Circular avatar with online-status dot */}
         <motion.div
           custom={0.2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="md:col-span-2 relative max-w-sm mx-auto md:mx-0 w-full"
+          className="md:col-span-2 relative mx-auto md:mx-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px]"
         >
-          <div className="absolute inset-0 bg-mint rounded-[2.5rem] translate-x-5 translate-y-5 -z-10" />
-          <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-peach -z-10" />
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-ink/5 aspect-[4/5] shadow-soft">
+          {/* Soft mint glow behind */}
+          <div className="absolute inset-0 rounded-full bg-mint blur-2xl opacity-60 scale-95 -z-10" />
+          {/* Offset violet ring */}
+          <div className="absolute inset-0 rounded-full border-2 border-accent/30 translate-x-3 translate-y-3 -z-10" />
+
+          {/* Avatar circle */}
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-mint via-paper to-peach border-4 border-paper shadow-soft">
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-8xl font-bold text-ink/20">
+              <span className="font-display text-8xl sm:text-9xl font-bold text-ink/30 select-none">
                 {profile.displayName?.[0] ?? "K"}
               </span>
             </div>
           </div>
-          {/* Floating badge */}
-          <div className="absolute -bottom-4 -right-4 bg-paper border border-ink/10 rounded-2xl px-4 py-2.5 shadow-soft">
-            <p className="font-mono text-[10px] text-ink/50 uppercase tracking-widest">
+
+          {/* Online status dot (bottom-right, like social platforms) */}
+          <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
+            <span className="relative flex h-5 w-5 sm:h-6 sm:w-6">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
+              <span className="relative inline-flex rounded-full h-5 w-5 sm:h-6 sm:w-6 bg-green-500 border-[3px] border-paper" />
+            </span>
+          </div>
+
+          {/* Floating "Based in" badge */}
+          <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 bg-paper border border-ink/10 rounded-2xl px-3.5 py-2 shadow-soft">
+            <p className="font-mono text-[9px] sm:text-[10px] text-ink/50 uppercase tracking-widest">
               Based in
             </p>
-            <p className="font-display font-semibold text-sm text-ink">
+            <p className="font-display font-semibold text-xs sm:text-sm text-ink">
               {profile.location || "Vietnam"}
             </p>
           </div>
