@@ -22,9 +22,9 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center px-5 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20"
     >
-      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-5 gap-12 md:gap-16 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-5 gap-4 sm:gap-10 md:gap-16 items-center">
         {/* Text column */}
-        <div className="md:col-span-3 space-y-7">
+        <div className="col-span-3 space-y-5 sm:space-y-7">
           <motion.div
             custom={0}
             initial="hidden"
@@ -46,7 +46,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="font-display font-bold text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] tracking-tightest text-ink"
+            className="font-display font-bold text-[clamp(2rem,7vw,7.5rem)] leading-[0.95] tracking-tightest text-ink"
           >
             Hi, I&apos;m
             <br />
@@ -119,7 +119,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="md:col-span-2 relative mx-auto md:mx-0 aspect-square w-[260px] sm:w-[320px] md:w-[360px]"
+          className="col-span-2 relative mx-auto md:mx-0 aspect-square w-full max-w-[140px] sm:max-w-[240px] md:max-w-[360px]"
         >
           {/* Soft mint glow */}
           <div className="absolute inset-0 rounded-full bg-mint blur-3xl opacity-50 -z-10" />
@@ -129,21 +129,21 @@ export default function Hero() {
 
           {/* Avatar container — image sits flush inside frame */}
           <div className="absolute inset-[10px] rounded-full overflow-hidden bg-gradient-to-br from-mint/60 via-paper to-peach/60 flex items-center justify-center">
-            <span className="font-display text-[7rem] sm:text-[9rem] font-bold text-ink/30 select-none leading-none">
+            <span className="font-display text-[3.5rem] sm:text-[6rem] md:text-[9rem] font-bold text-ink/30 select-none leading-none">
               {profile.displayName?.[0] ?? "K"}
             </span>
           </div>
 
           {/* Online status dot — sitting on circle edge at top-left (~15% diagonal) */}
           <div className="absolute top-[14.6%] left-[14.6%] -translate-x-1/2 -translate-y-1/2 z-20">
-            <span className="relative flex h-10 w-10 sm:h-12 sm:w-12">
+            <span className="relative flex h-5 w-5 sm:h-9 sm:w-9 md:h-12 md:w-12">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-10 w-10 sm:h-12 sm:w-12 bg-green-500 border-[5px] border-paper shadow-md" />
+              <span className="relative inline-flex rounded-full h-5 w-5 sm:h-9 sm:w-9 md:h-12 md:w-12 bg-green-500 border-2 sm:border-4 md:border-[5px] border-paper shadow-md" />
             </span>
           </div>
 
-          {/* Floating "Based in" badge — bottom-right */}
-          <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-paper border border-ink/10 rounded-2xl px-3.5 py-2 shadow-soft">
+          {/* Floating "Based in" badge — hidden on mobile, shown from sm+ */}
+          <div className="hidden sm:block absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-paper border border-ink/10 rounded-2xl px-3.5 py-2 shadow-soft">
             <p className="font-mono text-[9px] sm:text-[10px] text-ink/50 uppercase tracking-widest">
               Based in
             </p>
