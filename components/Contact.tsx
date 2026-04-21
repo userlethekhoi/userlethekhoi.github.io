@@ -19,7 +19,7 @@ export default function Contact() {
   const contactNote = locale === "vi" ? profile.contactNoteVi : profile.contactNote;
 
   return (
-    <section id="contact" className="relative px-6 py-24 md:py-36">
+    <section id="contact" className="relative px-5 sm:px-6 py-20 md:py-36">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={container}

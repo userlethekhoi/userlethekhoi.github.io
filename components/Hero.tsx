@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center px-6 pt-32 pb-20"
+      className="relative min-h-screen flex items-center px-5 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20"
     >
       <div className="max-w-7xl mx-auto w-full grid md:grid-cols-5 gap-12 md:gap-16 items-center">
         {/* Text column */}

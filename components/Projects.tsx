@@ -19,7 +19,7 @@ export default function Projects() {
   const { profile, t, locale } = useApp();
 
   return (
-    <section id="projects" className="relative px-6 py-24 md:py-32">
+    <section id="projects" className="relative px-5 sm:px-6 py-20 md:py-32">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={container}
