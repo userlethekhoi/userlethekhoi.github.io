@@ -113,38 +113,37 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Circular avatar with online-status dot */}
+        {/* Fixed circular frame with avatar inside */}
         <motion.div
           custom={0.2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="md:col-span-2 relative mx-auto md:mx-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px]"
+          className="md:col-span-2 relative mx-auto md:mx-0 aspect-square w-[260px] sm:w-[320px] md:w-[360px]"
         >
-          {/* Soft mint glow behind */}
-          <div className="absolute inset-0 rounded-full bg-mint blur-2xl opacity-60 scale-95 -z-10" />
-          {/* Offset violet ring */}
-          <div className="absolute inset-0 rounded-full border-2 border-accent/30 translate-x-3 translate-y-3 -z-10" />
+          {/* Soft mint glow */}
+          <div className="absolute inset-0 rounded-full bg-mint blur-3xl opacity-50 -z-10" />
 
-          {/* Avatar circle */}
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-mint via-paper to-peach border-4 border-paper shadow-soft">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-8xl sm:text-9xl font-bold text-ink/30 select-none">
-                {profile.displayName?.[0] ?? "K"}
-              </span>
-            </div>
-          </div>
+          {/* Fixed outer frame (ring) */}
+          <div className="absolute inset-0 rounded-full border border-ink/10 bg-paper shadow-soft" />
 
-          {/* Online status dot (bottom-right, like social platforms) */}
-          <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
-            <span className="relative flex h-5 w-5 sm:h-6 sm:w-6">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
-              <span className="relative inline-flex rounded-full h-5 w-5 sm:h-6 sm:w-6 bg-green-500 border-[3px] border-paper" />
+          {/* Avatar container — image sits flush inside frame */}
+          <div className="absolute inset-[10px] rounded-full overflow-hidden bg-gradient-to-br from-mint/60 via-paper to-peach/60 flex items-center justify-center">
+            <span className="font-display text-[7rem] sm:text-[9rem] font-bold text-ink/30 select-none leading-none">
+              {profile.displayName?.[0] ?? "K"}
             </span>
           </div>
 
-          {/* Floating "Based in" badge */}
-          <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 bg-paper border border-ink/10 rounded-2xl px-3.5 py-2 shadow-soft">
+          {/* Online status dot — top-left, larger, pulsing */}
+          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
+            <span className="relative flex h-7 w-7 sm:h-8 sm:w-8">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-7 w-7 sm:h-8 sm:w-8 bg-green-500 border-4 border-paper shadow-md" />
+            </span>
+          </div>
+
+          {/* Floating "Based in" badge — bottom-right */}
+          <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-paper border border-ink/10 rounded-2xl px-3.5 py-2 shadow-soft">
             <p className="font-mono text-[9px] sm:text-[10px] text-ink/50 uppercase tracking-widest">
               Based in
             </p>
