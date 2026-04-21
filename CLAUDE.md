@@ -185,7 +185,7 @@ Deploy GitHub Pages: push vào branch `main` → Settings → Pages → Source `
 - Heading khổng lồ full-width: `Let's build<br/>something <em class="text-accent not-italic">great.</em>`
 - Email CTA lớn `mailto:` với underline động.
 - Social icons (GitHub, LinkedIn, Facebook, Email) hàng ngang, hover đổi sang `accent`.
-- Footer nhỏ: `© 2026 Le The Khoi — Crafted with ☕ + Tailwind`.
+- Footer nhỏ: `© 2026 Le The Khoi — Made with Next.js + Tailwind`.
 
 ---
 

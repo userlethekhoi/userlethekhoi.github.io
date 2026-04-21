@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Deploy static site to GitHub Pages
 
 on:
   push:
@@ -22,24 +22,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js static export
-        run: npm run build
-        env:
-          NODE_ENV: production
+      - name: Prepare static site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: _site
 
   deploy:
     name: Deploy
