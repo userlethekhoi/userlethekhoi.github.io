@@ -134,11 +134,11 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Online status dot — overlapping top-left edge, bigger, pulsing */}
-          <div className="absolute top-[8%] left-[8%] -translate-x-1/2 -translate-y-1/2 z-10">
-            <span className="relative flex h-9 w-9 sm:h-11 sm:w-11">
+          {/* Online status dot — sitting on circle edge at top-left (~15% diagonal) */}
+          <div className="absolute top-[14.6%] left-[14.6%] -translate-x-1/2 -translate-y-1/2 z-20">
+            <span className="relative flex h-10 w-10 sm:h-12 sm:w-12">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-9 w-9 sm:h-11 sm:w-11 bg-green-500 border-[5px] border-paper shadow-md" />
+              <span className="relative inline-flex rounded-full h-10 w-10 sm:h-12 sm:w-12 bg-green-500 border-[5px] border-paper shadow-md" />
             </span>
           </div>
 
