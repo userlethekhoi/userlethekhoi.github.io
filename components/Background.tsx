@@ -1,41 +1,52 @@
-export default function Background() {
+"use client";
+
+import { motion } from "framer-motion";
+
+export function Background() {
   return (
-    <>
-      {/* Subtle dot grid on paper */}
-      <div
-        className="fixed inset-0 -z-10 opacity-[0.35]"
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-background">
+      {/* Dark modern grid background */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]" 
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(11,11,15,0.18) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
         }}
       />
-      {/* Top-right soft accent blob */}
-      <div
-        aria-hidden
-        className="fixed -z-10 top-[-10%] right-[-10%] w-[560px] h-[560px] rounded-full blur-3xl opacity-30 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(closest-side, #7C5CFF 0%, rgba(124,92,255,0) 70%)",
+      
+      {/* Ambient glowing orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          x: [0, 50, 0],
+          y: [0, -50, 0],
         }}
-      />
-      {/* Bottom-left soft mint blob */}
-      <div
-        aria-hidden
-        className="fixed -z-10 bottom-[-15%] left-[-10%] w-[520px] h-[520px] rounded-full blur-3xl opacity-40 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(closest-side, #B8F2D4 0%, rgba(184,242,212,0) 70%)",
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear",
         }}
+        className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-purple-900/40 blur-[120px]"
       />
-      {/* Bottom fade to paper */}
-      <div
-        className="fixed inset-0 -z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(250,250,247,0) 60%, rgba(250,250,247,0.85) 100%)",
+      
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+          x: [0, -40, 0],
+          y: [0, 60, 0],
         }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-900/30 blur-[130px]"
       />
-    </>
+      
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
+    </div>
   );
 }
